@@ -1,0 +1,132 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: #E5E6EB;
+}
+
+#helpDivContainer {
+  position: fixed;
+  z-index: 9;
+  background-color: #f1f1f1;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+  width: 351px;
+  right: 24px;
+  top: 81px;
+}
+
+#helpDivContainer .help-header {
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+}
+
+.transition {
+  -webkit-transition: all 0.3s ease-out;
+  -O-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.backDrop {
+  background-color: #00000061;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1111;
+}
+
+.loading-div-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #03A9F4;
+  z-index: 1111;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 0;
+  color: #fff;
+  text-shadow: 0px 0px 13px #000;
+  padding: 0.3rem;
+}
+
+.items-containner .items-list .item-active {
+  border: 2px solid !important;
+}
+
+.add-task-modal {
+  display: block;
+  top: 72px;
+  z-index: 1111111111;
+}
+
+.task-report-stage .table td, .task-report-stage .table th {
+  padding: 0.55rem;
+}
+
+.files-containner-stage {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.files-containner-stage .file-item .file-icon-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 39px;
+}
+
+.file-uploader-input-custom {
+  height: 182px;
+  background: #e0e0e0;
+  padding: 61px 24px;
+  border: 3px dashed #757575;
+}
+
+.temporary-background-image {
+  background-image: url(https://www.google.com/maps/about/images/mymaps/mymaps-desktop-16x9.png);
+  background-size: contain;
+  position: static;
+  background-attachment: fixed;
+}
+
+.progress-budget-insert div {
+  height: 62px;
+  float: left;
+}
+
+.clear-both {
+  clear: both;
+}
+
+.alert-container-div {
+  position: fixed;
+  bottom: 1px;
+  left: 77px;
+  z-index: 1111;
+}
+
+.fixed-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+/*# sourceMappingURL=main.css.map */
