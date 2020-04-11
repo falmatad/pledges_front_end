@@ -1,3 +1,6 @@
+// @import 'css/fontawesome-free-5.12.1-web/css/font-awesome.min.css';
+// @import '../../public/css/fontawesome-free-5.12.1-web/css/font-awesome.min.css';
+
 * {
     box-sizing: border-box;
 }
@@ -19,14 +22,14 @@ body {
 
 
     .help-header {
-      // padding: 10px;
-      cursor: move;
-      z-index: 10;
-      background-color: #2196F3;
-      color: #fff;
+        // padding: 10px;
+        cursor: move;
+        z-index: 10;
+        background-color: #2196F3;
+        color: #fff;
     }
 }
-  
+
 
 
 .transition {
@@ -82,7 +85,8 @@ body {
 
 .task-report-stage {
 
-    .table td, .table th {
+    .table td,
+    .table th {
         padding: 0.55rem;
     }
 }
@@ -91,6 +95,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
+
     .file-item {
         .file-icon-container {
             display: flex;
@@ -117,7 +122,7 @@ body {
 }
 
 .progress-budget-insert {
-    
+
     div {
         height: 62px;
         float: left;
@@ -142,4 +147,36 @@ body {
     right: 0;
     left: 0;
     bottom: 0;
+}
+
+
+.active-progress-action {
+    display: block;
+    width: 43px;
+    height: 44px;
+    position: absolute;
+    margin-top: -22px;
+    left: -7px;
+    border-radius: 9999999999px;
+    border: 3px solid #fff;
+    font-size: 0px;
+}
+
+.text-gray {
+    color: #bfbfbf !important;
+}
+
+.password-check-ul {
+    list-style-type: none;
+
+    .deactive-text {
+        text-decoration: line-through;
+        color: #737373;
+    }
+
+    .active-text {
+        font-weight: bold;
+        color: #28a745;
+    }
+
 }

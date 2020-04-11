@@ -108,6 +108,158 @@
   font-size: 26px;
 }
 
+.top-fixed-navidation .profile-picture {
+  border-radius: 9999999px;
+  height: 100%;
+  width: 100%;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.top-fixed-navidation .bg-transparent {
+  background-color: none;
+}
+
+.top-fixed-navidation .profile-modal {
+  position: fixed;
+  background: white;
+  top: 78px;
+  right: 10px;
+  width: 100%;
+  max-width: 266px;
+  height: 329px;
+  border-radius: 6px;
+  z-index: 11111111;
+  -webkit-box-shadow: 0px 7px 8px -2px #a4a4a4ab;
+          box-shadow: 0px 7px 8px -2px #a4a4a4ab;
+}
+
+.top-fixed-navidation .profile-modal .arrow {
+  background: #007bff;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: -12px;
+  -webkit-transform: rotate(47deg);
+          transform: rotate(47deg);
+  right: 18px;
+}
+
+.top-fixed-navidation .profile-modal .profile-section {
+  border-radius: 6px 6px 0px 0px;
+}
+
+.top-fixed-navidation .profile-modal .profile-section .img-containner {
+  width: auto;
+  padding-top: 27px;
+}
+
+.top-fixed-navidation .profile-modal .profile-section .img-containner img {
+  width: 83px;
+  height: 83px;
+  border-radius: 99999px;
+  border: 4px solid #fff;
+  display: block;
+  margin: auto;
+}
+
+.top-fixed-navidation .applications-modal {
+  position: fixed;
+  background: #f8f9fa;
+  top: 78px;
+  right: 10px;
+  width: 100%;
+  max-width: 587px;
+  height: calc(100vh - 94px);
+  max-height: 446px;
+  border-radius: 6px;
+  z-index: 11111111;
+  -webkit-box-shadow: 0px 7px 8px -2px #a4a4a4ab;
+          box-shadow: 0px 7px 8px -2px #a4a4a4ab;
+}
+
+.top-fixed-navidation .applications-modal .arrow {
+  background: #0161c7;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: -12px;
+  -webkit-transform: rotate(47deg);
+          transform: rotate(47deg);
+  right: 68px;
+}
+
+.top-fixed-navidation .applications-modal .applications-header-bar {
+  background: #0161c7;
+}
+
+.top-fixed-navidation .applications-modal .applications-item-containner {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 15px;
+}
+
+.top-fixed-navidation .applications-modal .applications-item-containner a {
+  text-decoration: none;
+}
+
+.top-fixed-navidation .applications-modal .applications-item-containner .application-item {
+  text-align: center;
+  padding-top: 9px;
+  padding: 9px;
+  border-radius: 7px;
+  text-decoration: none;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+
+.top-fixed-navidation .applications-modal .applications-item-containner .application-item:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.top-fixed-navidation .applications-modal .applications-item-containner .application-item i {
+  margin: 0;
+  padding: 0;
+  font-size: 61px;
+  color: inherit;
+}
+
+.top-fixed-navidation .applications-modal .applications-item-containner .application-item h4 {
+  font-size: 18px;
+  font-weight: bold;
+  padding-top: 4px;
+  color: inherit;
+}
+
+.top-fixed-navidation .applications-modal .applications-item-containner .application-item p {
+  margin-top: -8px;
+  font-size: 12px;
+  margin-bottom: 0;
+  color: #333 !important;
+}
+
+.top-fixed-navidation .applications-modal .profile-section {
+  border-radius: 6px 6px 0px 0px;
+}
+
+.top-fixed-navidation .applications-modal .profile-section .img-containner {
+  width: auto;
+  padding-top: 27px;
+}
+
+.top-fixed-navidation .applications-modal .profile-section .img-containner img {
+  width: 83px;
+  height: 83px;
+  border-radius: 99999px;
+  border: 4px solid #fff;
+  display: block;
+  margin: auto;
+}
+
 .app-body-containner {
   padding-top: 70px;
   padding-left: 70px;
@@ -115,7 +267,6 @@
 
 .sub-fixed-top-nav {
   background: #fff;
-  /* position: fixed; */
   height: 61px;
   padding: 9px;
   width: 98%;

@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const BackDrop = () => {
-    return (
-        <div className="backDrop animated fadeIn"></div>
-    )
-}
+const BackDrop = props => {
+  return (
+    <div
+      className="backDrop animated fadeIn"
+      onClick={() => props.close()}
+    ></div>
+  );
+};
 
 export default BackDrop;

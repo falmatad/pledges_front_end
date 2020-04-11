@@ -66,7 +66,8 @@ body {
   z-index: 1111111111;
 }
 
-.task-report-stage .table td, .task-report-stage .table th {
+.task-report-stage .table td,
+.task-report-stage .table th {
   padding: 0.55rem;
 }
 
@@ -128,5 +129,35 @@ body {
   right: 0;
   left: 0;
   bottom: 0;
+}
+
+.active-progress-action {
+  display: block;
+  width: 43px;
+  height: 44px;
+  position: absolute;
+  margin-top: -22px;
+  left: -7px;
+  border-radius: 9999999999px;
+  border: 3px solid #fff;
+  font-size: 0px;
+}
+
+.text-gray {
+  color: #bfbfbf !important;
+}
+
+.password-check-ul {
+  list-style-type: none;
+}
+
+.password-check-ul .deactive-text {
+  text-decoration: line-through;
+  color: #737373;
+}
+
+.password-check-ul .active-text {
+  font-weight: bold;
+  color: #28a745;
 }
 /*# sourceMappingURL=main.css.map */
