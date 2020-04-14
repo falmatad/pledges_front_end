@@ -41,10 +41,14 @@ class Outputs extends Component {
         <hr />
         <div className="plan-containners px-4">
           {!this.props.output.myOutputs.loading
-            ? Outputs.map(output => (
+            ? Outputs.map((output, i) => (
                 <div
                   key={output.output_id}
-                  className="alert bg-white shadow shadow-sm"
+                  className={
+                    i < 9
+                      ? `alert bg-white shadow shadow-sm zoomIn animated faster delay-${i}ms`
+                      : "alert bg-white shadow shadow-sm zoomIn animated faster delay-1s"
+                  }
                 >
                   <span className="badge text-secondary">
                     {output.outcome_title}

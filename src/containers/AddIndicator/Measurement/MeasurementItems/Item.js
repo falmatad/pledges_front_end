@@ -2,18 +2,18 @@ import React from "react";
 
 export default function Item(props) {
   return (
-    <div className="alert bg-white shadow-sm py-2 mb-2 border border-success border border-2">
+    <div className="alert bg-white shadow-sm py-2 mb-2 border border-success border border-2 fadeIn animated">
       <button
         className="btn btn-danger btn-sm ml-2"
         style={{ float: "right" }}
-        onClick={() => props.func.delete(props.data.id)}
+        onClick={() => props.delete(props.data.id)}
       >
         Delete
       </button>
       <button
         className="btn btn-info btn-sm"
         style={{ float: "right" }}
-        onClick={() => props.func.update(props.data.id)}
+        onClick={() => props.update(props.data.id)}
       >
         Update
       </button>

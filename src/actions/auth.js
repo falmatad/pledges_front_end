@@ -19,9 +19,6 @@ import setAuthToken from "../utils/setAuthToken";
 
 // LOAD USER
 export const loadUser = () => async dispatch => {
-  console.log("LOAD USER EXECUTED");
-
-  // // setAuthToken(localStorage.token);
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
@@ -33,8 +30,6 @@ export const loadUser = () => async dispatch => {
       payload: res.data
     });
   } catch (error) {
-    // console.log("[ERROR RES LOAD USER]: ", error);
-
     dispatch({
       type: AUTH_ERROR
     });
@@ -98,12 +93,17 @@ export const login = (email, password) => async dispatch => {
       payload: res.data
     });
 
-    console.log(res.data);
     dispatch(loadUser());
   } catch (error) {
+    let errorMsg = null;
+    if (error.response !== undefined) {
+      errorMsg = error.response.data.errors;
+    } else {
+      errorMsg = [];
+    }
     dispatch({
       type: LOGIN_FAIL,
-      payload: error.response.data.errors
+      payload: errorMsg
     });
   }
 };

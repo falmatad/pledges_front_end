@@ -14,7 +14,9 @@ const initialState = {
   type: null,
   theme: "",
   actionId: null,
-  payload: null
+  payload: null,
+  function: null,
+  agruments: null
 };
 
 export default function(state = initialState, action) {
@@ -29,15 +31,16 @@ export default function(state = initialState, action) {
         action: null,
         type: payload.type,
         theme: payload.theme,
-        actionId: payload.actionId,
-        payload: payload.payload
+        function: payload.function,
+        parameter: payload.parameter
       };
     case SUCCESS_CONFIRM:
       return {
         ...state,
         action: true,
         active: false,
-        actionId: payload
+        function: null,
+        parameter: null
       };
     case CLOSE_CONFIRM:
     case CANCELED_CONFIRM:
@@ -49,8 +52,8 @@ export default function(state = initialState, action) {
         action: null,
         type: null,
         theme: "",
-        actionId: "",
-        payload: ""
+        function: null,
+        parameter: null
       };
     case CLEAR_CONFIRM:
       return {
@@ -61,8 +64,8 @@ export default function(state = initialState, action) {
         action: null,
         type: null,
         theme: "",
-        actionId: "",
-        payload: ""
+        function: null,
+        parameter: null
       };
     default:
       return state;

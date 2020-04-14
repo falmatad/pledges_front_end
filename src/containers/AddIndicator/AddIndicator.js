@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
 // shared Imports
 import FormTitle from "../../components/FormTitle/FormTitle";
 import FormProgress from "../../components/FormProgress/FormProgress";
@@ -8,20 +11,11 @@ import CheckSelected from "./CheckSelected/CheckSelected";
 import NameSource from "./NameSource/NameSource";
 import Measurement from "./Measurement/Measurement";
 import BudgetType from "./BudgetType/BudgetType";
+import IndicatorSummary from "./IndicatorSummary/IndicatorSummary";
 
-export default class AddIndicator extends Component {
+class AddIndicator extends Component {
   state = {
-    data: {
-      pillar: { id: null, title: "" },
-      sector: { id: null, title: "" },
-      outcome: { id: null, title: "" },
-      output: { id: null, title: "" },
-      indicator_name: "",
-      source_of_data: [],
-      measurements: [],
-      budget: [],
-      progress_type: ""
-    },
+    outputId: this.props.match.params.outputId,
 
     stages: [
       {
@@ -57,21 +51,14 @@ export default class AddIndicator extends Component {
         validated: false
       }
     ],
-    active: 1
+    active: 1,
+    completed: false
   };
 
   // save the selected acnd cehck
-  SaveSelected = data => {
+  selectedSuccess = () => {
     // console.log("save selected: ", data);
     this.setState({
-      ...this.state,
-      data: {
-        ...this.state.data,
-        ...data,
-        measurement: [...this.state.data.measurement],
-        max_budget: [...this.state.data.max_budget]
-      },
-
       // update the state
       stages: this.state.stages.map(item => {
         if (item.id === 1) {
@@ -97,18 +84,8 @@ export default class AddIndicator extends Component {
   };
 
   // SAVE the data for the phase 2
-  SaveNameSource = data => {
-    // save to the state
-
+  nameSourceSuccess = () => {
     this.setState({
-      ...this.state,
-      data: {
-        ...this.state.data,
-        ...data,
-        measurement: [...this.state.data.measurement],
-        max_budget: [...this.state.data.max_budget]
-      },
-
       // update the state
       stages: this.state.stages.map(item => {
         if (item.id === 2) {
@@ -133,6 +110,45 @@ export default class AddIndicator extends Component {
     });
   };
 
+  // for the last phase
+  measurementSuccess = () => {
+    this.setState({
+      // update the state
+      stages: this.state.stages.map(item => {
+        if (item.id === 3) {
+          return {
+            ...item,
+            activated: true,
+            validated: true
+          };
+        } else if (item.id === 4) {
+          // activate the next from
+          return {
+            ...item,
+            activated: true
+          };
+        } else {
+          return {
+            ...item
+          };
+        }
+      }),
+      active: 4
+    });
+  };
+
+  budgetSuccess = () => {
+    this.setState({
+      completed: true
+    });
+  };
+
+  backFromSummary = () => {
+    this.setState({
+      completed: false
+    });
+  };
+
   // allow to switvh the containners
   SwitchState = stage => {
     // find the stage
@@ -152,45 +168,81 @@ export default class AddIndicator extends Component {
   activeStage = () => {
     if (this.state.active === 1) {
       return (
-        <CheckSelected data={this.state.data} success={this.SaveSelected} />
+        <CheckSelected
+          outputId={this.state.outputId}
+          success={this.selectedSuccess}
+        />
       );
     } else if (this.state.active === 2) {
       return (
         <NameSource
-          indicator_name={this.state.data.indicator_name}
-          source_of_data={this.state.data.source_of_data}
-          success={this.SaveNameSource}
+          title={this.props.indicator.indicator.indicator_title}
+          source={this.props.indicator.indicator.source_of_data}
+          description={this.props.indicator.indicator.indicator_description}
+          success={this.nameSourceSuccess}
         />
       );
     } else if (this.state.active === 3) {
-      return <Measurement />;
+      return <Measurement success={this.measurementSuccess} />;
     } else if (this.state.active === 4) {
-      return <BudgetType />;
+      return (
+        <BudgetType
+          data={{
+            budget: this.props.indicator.indicator.budget,
+            progress_type: this.props.indicator.indicator.progress_type
+          }}
+          success={this.budgetSuccess}
+        />
+      );
     } else {
       return <h1>Nothing is selected</h1>;
     }
   };
 
   render() {
-    // console.log("dd: ", this.SwitchState);
+    const { indicator } = this.props;
 
     return (
       <React.Fragment>
         <div>
           <FormTitle
-            Title="Number of ha consolidated under priority crops"
-            SubTitle="Number of ha consolidated consolidated of ha consolidated consolidated under priority crops"
+            Title="ADD INDICATOR TO:"
+            SubTitle={
+              indicator.indicator.output.title === null
+                ? "---"
+                : indicator.indicator.output.title
+            }
           />
 
-          <FormProgress
-            progress={this.state.stages}
-            active={this.state.active}
-            onClick={this.SwitchState}
-          />
+          {this.state.completed ? (
+            <IndicatorSummary
+              data={this.props.indicator.indicator}
+              back={this.backFromSummary}
+              history={this.props.history}
+            />
+          ) : (
+            <FormProgress
+              progress={this.state.stages}
+              active={this.state.active}
+              onClick={this.SwitchState}
+            />
+          )}
 
-          {this.activeStage()}
+          {!this.state.completed ? this.activeStage() : null}
         </div>
       </React.Fragment>
     );
   }
 }
+
+AddIndicator.propTypes = {
+  indicator: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  indicator: state.indicator,
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(AddIndicator);

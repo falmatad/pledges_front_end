@@ -60,7 +60,7 @@ const Applications = props => {
             </div>
           </Link>
 
-          <Link to="/" onClick={() => props.close()}>
+          <Link to="/indicators" onClick={() => props.close()}>
             <div className="shadow-sm bg-white application-item  fadeIn animated delay-5ms">
               <i className="fa fa-user"></i>
               <h4>Indicator</h4>

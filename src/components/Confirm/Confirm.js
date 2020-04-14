@@ -41,6 +41,9 @@ class Confirm extends Component {
         if (res.data.authenticated) {
           //SUCCESS
           this.props.successConfirm(this.props.confirm.actionId);
+          if (this.props.confirm.function !== null) {
+            this.props.confirm.function(this.props.confirm.parameter);
+          }
         } else {
           this.setState({ loading: false });
           this.setState({
@@ -74,6 +77,9 @@ class Confirm extends Component {
       }
     } else {
       this.props.successConfirm(this.props.confirm.actionId);
+      if (this.props.confirm.function !== null) {
+        this.props.confirm.function(this.props.confirm.parameter);
+      }
     }
   };
 
@@ -129,9 +135,7 @@ class Confirm extends Component {
         <div>
           <BackDrop
             close={
-              this.props.confirm.type !== "secured"
-                ? this.close
-                : () => console.log()
+              this.props.confirm.type !== "secured" ? this.close : () => {}
             }
           />
           <div
@@ -146,6 +150,7 @@ class Confirm extends Component {
                   className="close text-white"
                   aria-label="Close"
                   onClick={() => this.close()}
+                  disabled={this.state.loading ? true : false}
                 >
                   <span aria-hidden="true">×</span>
                 </button>
@@ -160,6 +165,7 @@ class Confirm extends Component {
                   className="btn btn-secondary  px-4 btn-lg"
                   data-dismiss="modal"
                   onClick={() => this.close()}
+                  disabled={this.state.loading ? true : false}
                 >
                   No
                 </button>

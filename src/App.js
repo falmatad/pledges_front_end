@@ -34,6 +34,7 @@ import Login from "./containers/Login/Login";
 import CompleteProfile from "./components/CompleteProfile/CompleteProfile";
 import Plans from "./containers/Plans/Plans";
 import Outputs from "./containers/Outputs/Outputs";
+import Indicators from "./containers/Indicators/Indicators";
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -85,6 +86,8 @@ class App extends Component {
                   path="/millestone"
                   component={TargetMilleStone}
                 />
+                <PrivateRoute exact path="/indicators" component={Indicators} />
+
                 <PrivateRoute exact path="/complete" component={Complete} />
                 <PrivateRoute exact path="/report" component={Report} />
                 <PrivateRoute exact path="/plans" component={Plans} />
